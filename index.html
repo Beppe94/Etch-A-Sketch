@@ -5,15 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css" defer>
+    <link rel="stylesheet" href="style.css">
     <title>Etch-A-Sketch</title>
 </head>
 <body>
-    <header>
-        <h1 class="title">Etch-A-Sketch</h1>
+    <header class="title">
+        <h1>Etch-A-Sketch</h1>
     </header>
     <div class="main">
-        <div class="container" id="gridContainer"></div>
+        <div class="grid" id="gridContainer"></div>
+        <div class="wrapper">
+            <input id="colorInput" type="color">
+            <button id="color">Color</button>
+            <button id="eraser">Eraser</button>
+            <button id="clearGrid">Clear Grid</button>
+            <button id="rainbow">Rainbow</button>
+        </div>
     </div>
 </body>
 </html>

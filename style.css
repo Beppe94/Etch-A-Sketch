@@ -1,22 +1,35 @@
-:root {
-    --grid-cols: 1;
-    --grid-rows: 1;
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
 }
 
 .main {
     display: flex;
     justify-content: center;
+    gap: 100px;
 }
-#gridContainer {
+
+.title {
+    display: flex;
+    justify-content: center;
+    height: 20%;
+    align-items: center;
+}
+
+.grid {
     display: grid;
+    justify-content: center;
     width: 500px;
     height: 500px;
-    grid-template-columns: repeat(16,1fr);
-    grid-template-rows: repeat(16, 1fr) ;
 }
 
 .grid-item {
     padding: 1em;
     border: 2px solid black;
+    border-radius: 4px;
 }
 
