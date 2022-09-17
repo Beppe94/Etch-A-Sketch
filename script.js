@@ -1,3 +1,4 @@
+//default values when page loads
 const DEFAULT_COLOR = 'black'
 const DEFAULT_SIZE = 16
 const DEFAULT_MODE = 'color'
@@ -6,6 +7,7 @@ let currentColor = DEFAULT_COLOR
 let currentSize = DEFAULT_SIZE
 let currentMode = DEFAULT_MODE
 
+//getting id elements from html
 const gridC = document.getElementById('gridContainer')
 const eraserBtn = document.getElementById('eraser')
 const clearGrid = document.getElementById('clearGrid')
@@ -13,6 +15,7 @@ const rainbowBtn = document.getElementById('rainbow')
 const colorInput = document.getElementById('colorInput')
 const color = document.getElementById('color')
 const gridSize = document.getElementById('gridSize')
+const errTxt = document.getElementById('errTxt')
 
 //buttons functionality 
 eraserBtn.onclick = () => setMode('eraser')
@@ -27,6 +30,7 @@ function setMode(newMode) {
 }
 
 function setColor(newColor) {
+    color.style.backgroundColor = newColor
     currentColor = newColor
 }
 
@@ -38,11 +42,11 @@ function changeSize(n) {
     if(n <= 64) {
         setSize(n)
         reloadGrid()
+        removeTxt()
         gridSize.innerHTML = n * n
-        gridSize.style.color = 'black'
     } else if(n > 64){
-        gridSize.style.color = 'red'
-    }   
+        showTxt()
+    }
 }
 
 function makeGrid(size) {
@@ -55,6 +59,16 @@ function makeGrid(size) {
         grid.addEventListener('mousedown', changeColor)
         gridC.appendChild(grid).className = 'grid-item';
     }
+}
+
+function showTxt() {
+    errTxt.textContent = 'Input too big, max 64!'
+    errTxt.classList.add('showTxt')
+}
+
+function removeTxt() {
+    errTxt.textContent = ''
+    errTxt.classList.remove('showTxt')
 }
 
 function reloadGrid() {
@@ -80,11 +94,10 @@ function changeColor(e) {
     } else if(currentMode == 'color') {
         e.target.style.backgroundColor = currentColor
     } else if(currentMode == 'eraser') {
-        e.target.style.backgroundColor = 'white'
+        e.target.style.backgroundColor = '#fefefe'
     }
 
 }
-
 
 window.onload = () => {
     makeGrid(DEFAULT_SIZE)
